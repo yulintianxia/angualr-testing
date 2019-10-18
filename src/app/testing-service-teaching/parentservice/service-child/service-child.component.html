@@ -1,0 +1,11 @@
+<h1>child</h1>
+
+<div *ngIf="loggerService">
+    <ul>
+        <li *ngFor="let log of loggerService.getLogges()">{{ log }}</li>
+    </ul>
+</div>
+<div *ngIf="!loggerService">
+    loggerService is not found!!
+</div>
+<button (click)="addLog()">AddLog</button>

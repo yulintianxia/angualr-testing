@@ -1,15 +1,16 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Hero } from '../interface/hero';
+
 import { ActivatedRoute } from '@angular/router';
-import { HeroService } from '../hero.service';
+import { HeroService } from '../shared/services/hero.service';
 import { Location } from '@angular/common';
+import { HeroInterface } from '../shared/interfaces/hero.interface';
 @Component({
   selector: 'app-hero-detail',
   templateUrl: './hero-detail.component.html',
   styleUrls: ['./hero-detail.component.scss']
 })
 export class HeroDetailComponent implements OnInit {
-  @Input() hero: Hero;
+  @Input() hero: HeroInterface;
   constructor(
     private route: ActivatedRoute,
     private location: Location,

@@ -1,0 +1,9 @@
+:host(.active) {
+    display: block;
+    border: 1px solid black;
+    color: red;
+}
+
+:host-context(.testing) {
+    background-color: blue;
+}

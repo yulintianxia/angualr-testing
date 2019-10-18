@@ -1,0 +1,45 @@
+<!-- <ul>
+    <li draggable>Coffee</li>
+    <li draggable>Tea</li>
+    <li draggable>Milk</li>
+</ul>
+
+
+<div droppable>
+    <p>删除</p>
+</div> -->
+<!-- <ul>
+    <li draggable [dragScope]="'drink'">Coffee</li>
+    <li draggable [dragScope]="'drink'">Tea</li>
+    <li draggable [dragScope]="'meal'">Biryani</li>
+    <li draggable [dragScope]="'meal'">Kebab</li>
+    ...
+</ul>
+<div droppable [dropScope]="'drink'" [dragOverClass]="'drag-target-border'">
+    <p>Only Drinks can be dropped in the above container</p>
+</div>
+
+<div droppable [dropScope]="['drink', 'meal']" [dragOverClass]="'drag-target-border'">
+    <p>Both Meal and Drinks can be dropped in the above container</p>
+</div> -->
+
+
+
+
+<h3>Transfer Data via Drag Drop</h3>
+<div class="row">
+    <div class="col-sm-3">
+        <ul class="list-group">
+            <li draggable droppable *ngFor="let item of items" [dragData]="item" class="list-group-item">{{item.name}}</li>
+        </ul>
+    </div>
+
+    <div class="col-sm-3">
+        <div class="panel panel-default" draggable droppable (onDrop)="onItemDrop($event)">
+            <div class="panel-heading">Drop Items here</div>
+            <div class="panel-body">
+                <li *ngFor="let item of droppedItems" class="list-group-item">{{item.name}}</li>
+            </div>
+        </div>
+    </div>
+</div>

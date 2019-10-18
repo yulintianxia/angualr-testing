@@ -1,0 +1,7 @@
+<h1>parent</h1>
+<ul>
+    <li *ngFor="let log of loggerService.getLogges()">{{ log }}</li>
+</ul>
+<button (click)="addLog()">AddLog</button>
+<hr/>
+<app-service-child></app-service-child>

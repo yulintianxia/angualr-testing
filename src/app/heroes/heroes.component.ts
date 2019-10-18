@@ -1,19 +1,19 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Hero } from '../interface/hero';
-import { HeroService } from '../hero.service';
+import { HeroService } from '../shared/services/hero.service';
+import { HeroInterface } from '../shared/interfaces/hero.interface';
 @Component({
   selector: 'app-heroes',
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.scss']
 })
 export class HeroesComponent implements OnInit {
-  selectedHero: Hero;
-  heroes: Hero[];
+  selectedHero: HeroInterface;
+  heroes: HeroInterface[];
   constructor(private heroService: HeroService) { }
   ngOnInit() {
     this.getHeros();
   }
-  onSelect(hero: Hero) {
+  onSelect(hero: HeroInterface) {
     this.selectedHero = hero;
   }
   getHeros(): void {
@@ -24,10 +24,10 @@ export class HeroesComponent implements OnInit {
     if (!name) {
       return;
     }
-    this.heroService.addHero({ name } as Hero)
+    this.heroService.addHero({ name } as HeroInterface)
       .subscribe(hero => this.heroes.push(hero));
   }
-  delete(hero: Hero): void {
+  delete(hero: HeroInterface): void {
     this.heroes = this.heroes.filter(h => h !== hero);
     this.heroService.deleteHero(hero).subscribe();
   }
