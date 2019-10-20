@@ -45,6 +45,11 @@ import { ServiceChildComponent } from './testing-service-teaching/parentservice/
 import { MessageParentComponent } from './testing-service-teaching/message-parent/message-parent.component';
 import { MessageChildComponent } from './testing-service-teaching/message-parent/message-child/message-child.component';
 import { HeroTestingModule } from './hero-testing/hero-testing.module';
+import { ServiceAllComponent } from './more-d-service/service-all/service-all.component';
+import { CarComponents } from './more-d-service/service-all/car-component/car-component.component';
+import { HeroListComponentComponent } from './more-d-service/service-all/hero-list-component/hero-list-component.component';
+import { VaillainsListComponent } from './more-d-service/service-all/vaillains-list/vaillains-list.component';
+import { HeroTaxReturnComponent } from './more-d-service/service-all/hero-tax-return/hero-tax-return.component';
 
 
 
@@ -88,6 +93,11 @@ import { HeroTestingModule } from './hero-testing/hero-testing.module';
     ServiceChildComponent,
     MessageParentComponent,
     MessageChildComponent,
+    ServiceAllComponent,
+    CarComponents,
+    HeroListComponentComponent,
+    VaillainsListComponent,
+    HeroTaxReturnComponent,
   ],
   providers: [LoggerService],
   entryComponents: [
