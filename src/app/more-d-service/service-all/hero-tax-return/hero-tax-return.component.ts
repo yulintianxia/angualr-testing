@@ -31,8 +31,9 @@ import { HeroReturn } from 'src/app/shared/interfaces/hero-di';
 })
 export class HeroTaxReturnComponent implements OnInit {
   message = '';
-  constructor(private heroTarxReturnService: HeroTarxReturnService) { }
   @Output() close = new EventEmitter<void>();
+  constructor(private heroTarxReturnService: HeroTarxReturnService) { }
+ 
   ngOnInit() {
   }
   get taxReturn(): HeroReturn {

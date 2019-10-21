@@ -11,7 +11,7 @@ export class HeroTarxReturnService {
     this.originTaxReturn = htr;
     this.currenTaxReturn = htr.clone();
   }
-  get HeroReturn(): HeroReturn {
+  get taxReturn(): HeroReturn {
     return this.currenTaxReturn;
   }
 
