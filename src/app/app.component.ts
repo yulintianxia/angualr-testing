@@ -2,7 +2,7 @@ import { Component, OnInit, forwardRef } from '@angular/core';
 import { AdItem } from './adbanner/adconfig/ad-items';
 import { AdService } from './shared/services/ad.service';
 
-import { from } from 'rxjs';
+import { from, Observable } from 'rxjs';
 
 import { TestingData } from './shared/interfaces/test.interface';
 import { AdItems } from './adtesting/adItem';
@@ -49,7 +49,7 @@ export class AppComponent implements OnInit {
     this.toggle = !this.toggle;
   }
 
-  testData() {
+  testData(): any {
     let apiData: TestingData[] = [{ name: '11', value: 11 }, { name: '222', value: 222 }];
     const data = from(apiData);
     data.subscribe({
@@ -62,7 +62,7 @@ export class AppComponent implements OnInit {
     this.loggerService.addLog('add log from appComponent successfully');
   }
 
-  getStr() {
+  getStr(): string {
     return 'app component';
   }
   addLogTesting() {

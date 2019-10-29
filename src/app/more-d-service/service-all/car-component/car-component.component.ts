@@ -7,8 +7,6 @@ import {
   TireService
 } from 'src/app/shared/services/car-service.service';
 
-
-
 @Component({
   selector: 'app-c-car',
   template: `<div>c:{{description}}</div>`,
