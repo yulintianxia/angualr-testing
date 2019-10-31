@@ -8,8 +8,8 @@ import { UnsortedHeroesComponent } from './unsorted-heroes/unsorted-heroes.compo
 import { SortedHeroesComponent } from './sorted-heroes/sorted-heroes.component';
 import { ParentFinderComponent } from './parent-finder/parent-finder.component';
 import { StorageTestComponent } from './storage-test/storage-test.component';
-
-
+import { FormsModule } from '@angular/forms';
+import { HeroBiesComponent } from './hero-bies/hero-bies.component';
 
 @NgModule({
   declarations: [
@@ -20,9 +20,23 @@ import { StorageTestComponent } from './storage-test/storage-test.component';
     UnsortedHeroesComponent,
     SortedHeroesComponent,
     ParentFinderComponent,
-    StorageTestComponent],
+    StorageTestComponent,
+    HeroBiesComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+  ],
+  exports: [
+    DiAllServiceComponent,
+    HeroBisComponent,
+    HeroBisAndConcatComponent,
+    HeroOfTheMonthComponent,
+    UnsortedHeroesComponent,
+    SortedHeroesComponent,
+    ParentFinderComponent,
+    StorageTestComponent,
+    HeroBiesComponent
   ]
 })
 export class DiAllServiceModule { }

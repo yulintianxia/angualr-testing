@@ -50,6 +50,7 @@ import { CarComponents } from './more-d-service/service-all/car-component/car-co
 import { HeroListComponentComponent } from './more-d-service/service-all/hero-list-component/hero-list-component.component';
 import { VaillainsListComponent } from './more-d-service/service-all/vaillains-list/vaillains-list.component';
 import { HeroTaxReturnComponent } from './more-d-service/service-all/hero-tax-return/hero-tax-return.component';
+import { DiAllServiceModule } from './di-all-service/di-all-service.module';
 
 
 
@@ -99,7 +100,9 @@ import { HeroTaxReturnComponent } from './more-d-service/service-all/hero-tax-re
     VaillainsListComponent,
     HeroTaxReturnComponent,
   ],
-  providers: [LoggerService],
+  providers: [
+    LoggerService
+  ],
   entryComponents: [
     HeroJobAdComponent,
     HeroProfileComponent,
@@ -114,6 +117,7 @@ import { HeroTaxReturnComponent } from './more-d-service/service-all/hero-tax-re
     DropDivModule,
     ReactiveFormsModule,
     HeroTestingModule,
+    DiAllServiceModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     )
