@@ -22,17 +22,16 @@ export class HeroBiesComponent implements OnInit {
 
 }
 
-
 @Component({
   selector: 'app-hero-bises-and-contacts',
   template: `
-    <app-hero-bis [heroId]="1"> <app-hero-contact></app-hero-contact> </app-hero-bis>
-    <app-hero-bis [heroId]="2"> <app-hero-contact></app-hero-contact> </app-hero-bis>
-    <app-hero-bis [heroId]="3"> <app-hero-contact></app-hero-contact> </app-hero-bis>`,
+    <app-hero-bis [heroId]="1"> <app-hero-bis-and-concat></app-hero-bis-and-concat> </app-hero-bis>
+    <app-hero-bis [heroId]="2"> <app-hero-bis-and-concat></app-hero-bis-and-concat> </app-hero-bis>
+    <app-hero-bis [heroId]="3"> <app-hero-bis-and-concat></app-hero-bis-and-concat> </app-hero-bis>`,
     providers: [HeroBisService]
 })
 export class HeroBiosAndContactsComponent  implements OnInit  {
-  ngOnInit() { 
+  ngOnInit() {
   }
   constructor(private logger: LoggerdebugService) {
     logger.logInfo('Creating HeroBiosAndContactsComponent');

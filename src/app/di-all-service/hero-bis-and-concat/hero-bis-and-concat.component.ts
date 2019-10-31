@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Host, Optional } from '@angular/core';
+import { HerocacheService } from 'src/app/shared/services/herocache.service';
+import { LoggerdebugService } from 'src/app/shared/services/loggerdebug.service';
 
 @Component({
   selector: 'app-hero-bis-and-concat',
@@ -6,10 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hero-bis-and-concat.component.scss']
 })
 export class HeroBisAndConcatComponent implements OnInit {
-
-  constructor() { }
+  hasLogger = false;
+  constructor(
+    @Host()
+    private heroCache: HerocacheService,
+    @Host()
+    @Optional()
+    private logger: LoggerdebugService
+  ) {
+    if (logger) {
+      this.hasLogger = true;
+      logger.logInfo('HeroContactComponent can log!');
+    }
+  }
 
   ngOnInit() {
+  }
+
+  get phoneNumber() {
+    return this.heroCache.hero.phone;
   }
 
 }
