@@ -28,7 +28,7 @@ export class UnsortedHeroesComponent implements OnInit {
   templateUrl: './sorted-heroes.component.html',
   providers: [HeroBisService]
 })
-export class SortedHeroesComponent  extends UnsortedHeroesComponent  implements OnInit {
+export class SortedHeroesComponent  extends UnsortedHeroesComponent   {
   heroes: Array<Herobis>;
   constructor(heroBisService: HeroBisService) {
     super(heroBisService);
