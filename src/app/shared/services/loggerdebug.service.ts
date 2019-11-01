@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LoggerdebugService {
+  [x: string]: any;
   logs: string[] = [];
   constructor() { }
   logInfo(msg: any) {
