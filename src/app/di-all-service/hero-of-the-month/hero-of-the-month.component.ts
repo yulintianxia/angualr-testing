@@ -4,6 +4,8 @@ import { DateLoggerService } from 'src/app/shared/services/date-logger.service';
 import { LoggerdebugService } from 'src/app/shared/services/loggerdebug.service';
 import { Herobis } from 'src/app/shared/interfaces/hero-bis';
 import { MinLoggerDebug } from 'src/app/shared/interfaces/minLoggerDebug';
+import { RUNNERS_UP, runnersUpFactory } from 'src/app/shared/services/runners-up';
+import { HeroBisService } from 'src/app/shared/services/hero-bis.service';
 
 const someHero = new Herobis(42, 'Magma', 'Had a great month!', '555-555-5555');
 
@@ -16,8 +18,13 @@ export const Title = new InjectionToken<string>('title');
     { provide: Herobis, useValue: someHero },
     { provide: Title, useValue: '这是一个title' },
     { provide: HerocacheService, useClass: HerocacheService },
-    // { provide: LoggerdebugService, useClass: DateLoggerService },
+    { provide: LoggerdebugService, useClass: DateLoggerService },
     { provide: MinLoggerDebug, useExisting: LoggerdebugService },
+    {
+      provide: RUNNERS_UP, useFactory: runnersUpFactory(2), deps: [
+        Herobis, HeroBisService
+      ]
+    }
   ]
 })
 export class HeroOfTheMonthComponent implements OnInit {
@@ -25,12 +32,14 @@ export class HeroOfTheMonthComponent implements OnInit {
   constructor(
     public hero: Herobis,
     @Inject(Title) public title: string,
-    // private loggerDebug: LoggerdebugService,
-    private logg: MinLoggerDebug
+    private loggerDebug: LoggerdebugService,
+    private logg: MinLoggerDebug,
+    @Inject(RUNNERS_UP) public runnersUp: string,
+
   ) { }
 
   ngOnInit() {
-    // console.log(this.hero);
+    console.log(this.title);
     this.getData();
   }
   getData() {
