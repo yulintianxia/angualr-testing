@@ -6,30 +6,56 @@ export abstract class Base {
 export abstract class Parent {
   name: string;
 }
-const DifferentPaent = Parent;
+const DifferentParent = Parent;
 
 export function provideParent(component: any, parentType?: any) {
-  return { provide: parentType || Parent, useExisting: forwardRef(() => component) }
+  return { provide: parentType || Parent, useExisting: forwardRef(() => component) };
 }
 
-
-
+export function provideTheParent(component: any) {
+  return {
+    provide: Parent, useExisting: forwardRef(() => component)
+  };
+}
 
 @Component({
-  selector: 'app-parent-finders',
-  templateUrl: './parent-finders.component.html'
+  selector: 'app-carol',
+  templateUrl: './carol.component.html'
 })
-export class CraigComponent implements OnInit {
+export class CarolComponent implements OnInit {
   name = 'carol';
-  constructor(@Optional() public alex: Base) { }
-
+  constructor(@Optional() public parent: Parent) { }
   ngOnInit() {
   }
 }
 
 @Component({
-  selector: 'app-parent-finderses',
-  templateUrl: './parent-finders.component.html',
+  selector: 'app-chris',
+  templateUrl: './carol.component.html'
+})
+export class ChrisComponent implements OnInit {
+  name = 'Chris';
+  constructor(@Optional() public parent: Parent) { }
+  ngOnInit() {
+  }
+}
+
+@Component({
+  selector: 'app-craig',
+  templateUrl: './craig.component.html'
+})
+export class CraigComponent implements OnInit {
+  name = 'craig';
+  constructor(@Optional() public parent: Parent) { }
+  ngOnInit() {
+  }
+}
+
+
+
+@Component({
+  selector: 'app-barry',
+  templateUrl: './barry.component.html',
   providers: [
     { provide: Parent, useExisting: forwardRef(() => BarryComponent) }
   ]
@@ -41,22 +67,18 @@ export class BarryComponent implements Parent {
 
 @Component({
   selector: 'app-bob',
-  templateUrl: './parent-finders.component.html',
-  providers: [
-    { provide: Parent, useExisting: forwardRef(() => BarryComponent) }
-  ]
+  templateUrl: './bob.component.html',
+  providers:  [ provideParent(BobComponent) ]
 })
 export class BobComponent implements Parent {
-  name = 'Barry';
+  name = 'bob';
   constructor(@SkipSelf() @Optional() public parent: Parent) { }
 }
 
 @Component({
   selector: 'app-beth',
-  templateUrl: './parent-finders.component.html',
-  providers: [
-    { provide: Parent, useExisting: forwardRef(() => BethComponent) }
-  ]
+  templateUrl: './beth.component.html',
+  providers:  [ provideParent(BethComponent, DifferentParent) ]
 })
 export class BethComponent implements Parent {
   name = 'Beth';
@@ -79,7 +101,7 @@ export class AlexComponent extends Base {
   templateUrl: './alice.component.html',
   providers: [provideParent(AliceComponent)]
 })
-export class AliceComponent extends Base {
+export class AliceComponent implements Parent {
   name = 'Alice';
 }
 
@@ -89,7 +111,7 @@ export class AliceComponent extends Base {
   providers: [provideParent(CathyComponent)]
 })
 export class CathyComponent {
-  constructor( @Optional() public alex: AlexComponent ) { }
+  constructor(@Optional() public alex: AlexComponent) { }
 }
 
 @Component({
@@ -98,8 +120,9 @@ export class CathyComponent {
   styleUrls: ['./parent-finder.component.scss']
 })
 export class ParentFinderComponent {
-  
+
 }
+
 
 
 
