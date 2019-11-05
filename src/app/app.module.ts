@@ -51,6 +51,7 @@ import { HeroListComponentComponent } from './more-d-service/service-all/hero-li
 import { VaillainsListComponent } from './more-d-service/service-all/vaillains-list/vaillains-list.component';
 import { HeroTaxReturnComponent } from './more-d-service/service-all/hero-tax-return/hero-tax-return.component';
 import { DiAllServiceModule } from './di-all-service/di-all-service.module';
+import { HttpAllServicesModule } from './http-all-services/http-all-services.module';
 
 
 
@@ -118,6 +119,7 @@ import { DiAllServiceModule } from './di-all-service/di-all-service.module';
     ReactiveFormsModule,
     HeroTestingModule,
     DiAllServiceModule,
+    HttpAllServicesModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     )

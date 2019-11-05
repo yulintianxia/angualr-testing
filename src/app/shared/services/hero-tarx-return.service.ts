@@ -21,7 +21,7 @@ export class HeroTarxReturnService {
 
   saveTaxReturn() {
     this.taxReturn = this.currenTaxReturn;
-    this.heroService.saveHeroReturn(this.currenTaxReturn).subscribe(); 
+    this.heroService.saveHeroReturn(this.currenTaxReturn).subscribe();
   }
 
 }
