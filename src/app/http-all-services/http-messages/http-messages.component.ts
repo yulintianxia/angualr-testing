@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpmessageService } from 'src/app/shared/services/httpmessage.service';
 
 @Component({
   selector: 'app-http-messages',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HttpMessagesComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public messageService: HttpmessageService
+  ) { }
 
   ngOnInit() {
   }

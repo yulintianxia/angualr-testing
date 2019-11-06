@@ -36,8 +36,29 @@ export class HeroHttpService {
       params: new HttpParams().set('name', term)
     } : {};
     return this.http.get<HeroHttp[]>(this.heroesUrl, options)
-    .pipe(
-      catchError(this.handleError('searchHeroes', []))
-    );
+      .pipe(
+        catchError(this.handleError('searchHeroes', []))
+      );
+  }
+  addHero(hero: HeroHttp): Observable<HeroHttp> {
+    return this.http.post<HeroHttp>(this.heroesUrl, hero, httpOptions)
+      .pipe(
+        catchError(this.handleError('addHero', hero))
+      );
+  }
+  deleteHero(id: number): Observable<{}> {
+    const url = `${this.heroesUrl}/${id}`;
+    console.log(url);
+    return this.http.delete(url, httpOptions)
+      .pipe(
+        catchError(this.handleError('deleteHero'))
+      );
+  }
+  updateHero(hero: HeroHttp): Observable<HeroHttp> {
+    httpOptions.headers = httpOptions.headers.set('Authorization', 'my-new-auth-token');
+    return this.http.put<HeroHttp>(this.heroesUrl, hero, httpOptions)
+      .pipe(
+        catchError(this.handleError('updateHero', hero))
+      );
   }
 }

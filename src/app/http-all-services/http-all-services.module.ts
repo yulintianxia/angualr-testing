@@ -8,6 +8,7 @@ import { HttpInterfaceptorsComponent } from './http-interfaceptors/http-interfac
 import { HttpMessagesComponent } from './http-messages/http-messages.component';
 import { PackageSerachComponent } from './package-serach/package-serach.component';
 import { UploaderComponent } from './uploader/uploader.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -23,7 +24,8 @@ import { UploaderComponent } from './uploader/uploader.component';
     UploaderComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [
     HttpAllServicesComponent,

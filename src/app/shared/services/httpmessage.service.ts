@@ -4,12 +4,12 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class HttpmessageService {
-  message: Array<string> = [];
+  messages: Array<string> = [];
   constructor() { }
   add(message: string) {
-    return this.message.push(message);
+    return this.messages.push(message);
   }
   clear() {
-    return this.message = [];
+    return this.messages = [];
   }
 }

@@ -5,7 +5,6 @@ import { Observable, of } from 'rxjs';
 
 export type HandleError = <T>(operation?: string, result?: T) => (error: HttpErrorResponse) => Observable<T>;
 
-
 @Injectable({
   providedIn: 'root'
 })

@@ -13,7 +13,7 @@
         padding: .3em 0;
         height: 1.6em;
         border-radius: 4px;
-        width: 19em;
+        width: 270px;
     }
     &:hover {
         color: #607D8B;
@@ -25,7 +25,7 @@
         text-decoration: none;
         position: relative;
         display: block;
-        width: 250px;
+        width: 220px;
     }
     &:hover {
         color: #607D8B;
@@ -53,7 +53,7 @@
     }
 }
 
-.button {
+button {
     background-color: #eee;
     border: none;
     padding: 5px 10px;
@@ -81,10 +81,3 @@ input {
     margin-bottom: 2px;
     width: 11em;
 }
-
-
-/*
-  Copyright Google LLC. All Rights Reserved.
-  Use of this source code is governed by an MIT-style license that
-  can be found in the LICENSE file at http://angular.io/license
-  */
