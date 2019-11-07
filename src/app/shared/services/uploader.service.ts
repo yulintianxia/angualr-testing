@@ -7,13 +7,21 @@ import { map, catchError, tap, last } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class DownloaderService {
+export class UploaderService {
 
   constructor(
     private http: HttpClient,
     private message: MessageService
 
   ) { }
+  /* 多文件list上传 */
+  // If uploading multiple files, change to:
+  // upload(files: FileList) {
+  //   const formData = new FormData();
+  //   files.forEach(f => formData.append(f.name, f));
+  //   new HttpRequest('POST', '/upload/file', formData, {reportProgress: true});
+  //   ...
+  // }
   upload(file: File) {
     if (!file) {
       return;
@@ -30,7 +38,7 @@ export class DownloaderService {
         catchError(this.handleError(file))
       );
   }
-
+  
   private getEventMessage(event: HttpEvent<any>, file: File) {
     switch (event.type) {
       case HttpEventType.Sent:
@@ -41,7 +49,6 @@ export class DownloaderService {
         return `File "${file.name}" is ${percentDone}% uploaded.`;
       case HttpEventType.Response:
         return `File "${file.name}" was completely uploaded!`;
-
       default:
         return `File "${file.name}" surprising upload event: ${event.type}.`;
     }
