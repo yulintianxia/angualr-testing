@@ -52,6 +52,7 @@ import { VaillainsListComponent } from './more-d-service/service-all/vaillains-l
 import { HeroTaxReturnComponent } from './more-d-service/service-all/hero-tax-return/hero-tax-return.component';
 import { DiAllServiceModule } from './di-all-service/di-all-service.module';
 import { HttpAllServicesModule } from './http-all-services/http-all-services.module';
+import { AuthService } from './shared/services/auth.service';
 
 
 
