@@ -1,26 +1,30 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpRequest, HttpHandler, HttpEvent, HttpEventType, HttpResponse } from '@angular/common/http';
-import { Observable, observable } from 'rxjs';
+import { HttpRequest, HttpHandler, HttpEvent, HttpEventType, HttpResponse, HttpInterceptor, HttpProgressEvent } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HttpInterceptorProvidersService {
+export class UploadInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (req.url.indexOf('/upload/file') === -1) {
       return next.handle(req);
     }
+    const delay = 300; // TODO: inject delay?
+    return createUploadEvents(delay);
   }
-  const delay = 300;
-  return createUploadEvents(delay);
 }
 
+/** Create simulation of upload event stream */
 function createUploadEvents(delay: number) {
+  // Simulate XHR behavior which would provide this information in a ProgressEvent
   const chunks = 5;
   const total = 12345678;
   const chunkSize = Math.ceil(total / chunks);
-  return new observable<HttpEvent<any>>(Observer => {
-    Observer.next({ type: HttpEventType.Sent });
+
+  return new Observable<HttpEvent<any>>(observer => {
+    // notify the event stream that the request was sent.
+    observer.next({ type: HttpEventType.Sent });
     uploadLoop(0);
     function uploadLoop(loaded: number) {
       // N.B.: Cannot use setInterval or rxjs delay (which uses setInterval)
@@ -28,14 +32,25 @@ function createUploadEvents(delay: number) {
       // Use setTimeout and tail recursion instead.
       setTimeout(() => {
         loaded += chunkSize;
+
         if (loaded >= total) {
           const doneResponse = new HttpResponse({
-            status: 201,
+            status: 201, // OK but no body;
           });
-          Observer.next(doneResponse);
-          Observer.complete();
+          observer.next(doneResponse);
+          observer.complete();
+          return;
         }
-      });
+
+        const progressEvent: HttpProgressEvent = {
+          type: HttpEventType.UploadProgress,
+          loaded,
+          total
+        };
+        observer.next(progressEvent);
+        uploadLoop(loaded);
+      }, delay);
     }
   });
 }
+
