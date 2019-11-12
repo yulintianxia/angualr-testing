@@ -53,7 +53,7 @@ import { HeroTaxReturnComponent } from './more-d-service/service-all/hero-tax-re
 import { DiAllServiceModule } from './di-all-service/di-all-service.module';
 import { HttpAllServicesModule } from './http-all-services/http-all-services.module';
 import { AuthService } from './shared/services/auth.service';
-import { httpInterfaceptorProviders } from './shared/services';
+import { httpInterfaceptorProviders } from './shared/HttpInterceptor';
 import { TestingRxComponent } from './testing-rx/testing-rx.component';
 
 
