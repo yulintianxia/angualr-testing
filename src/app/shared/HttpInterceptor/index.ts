@@ -5,6 +5,7 @@ import { AuthInterceptorService } from './auth-interceptor.service';
 import { NoopInterceptorService } from './noop-interceptor.service';
 import { EnsureHttpsInterceptorService } from './ensure-https-interceptor.service';
 import { TrimNameInterceptorService } from './trim-name-interceptor.service';
+import { LoggingInterceptorService } from './logging-interceptor.service';
 
 /* 拦截器实现 */
 export const httpInterfaceptorProviders = [
@@ -21,7 +22,13 @@ export const httpInterfaceptorProviders = [
         provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true
     },
     {
+        provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptorService, multi: true
+    },
+    {
         provide: HTTP_INTERCEPTORS, useClass: UploadInterceptor, multi: true
     },
+    {
+        provide: HTTP_INTERCEPTORS, useClass: UploadInterceptor, multi: true
+    }
     
 ];
