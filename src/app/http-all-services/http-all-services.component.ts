@@ -11,6 +11,8 @@ export class HttpAllServicesComponent implements OnInit {
   showDownloader = true;
   showUploader = true;
   showSearch = true;
+  
+  
   constructor() { }
   
   ngOnInit() {

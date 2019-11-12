@@ -32,7 +32,11 @@ export class AppComponent implements OnInit {
   get format() {
     return this.toggle ? 'shortDate' : 'fullDate';
   }
-  constructor(private loggerService: LoggerService, private adService: AdService, private adtestingService: AdtestingService, private questionService: QuestionService,
+  constructor(
+    private loggerService: LoggerService,
+    private adService: AdService,
+    private adtestingService: AdtestingService,
+    private questionService: QuestionService,
     private heroTestingService: HeroTestingService
   ) {
     this.questions = this.questionService.getQuestions();

@@ -26,6 +26,15 @@ export class UploaderService {
     if (!file) {
       return;
     }
+     // COULD HAVE WRITTEN:
+    // return this.http.post('/upload/file', file, {
+    //   reportProgress: true,
+    //   observe: 'events'
+    // }).pipe(
+
+    // Create the request object that POSTs the file to an upload endpoint.
+    // The `reportProgress` option tells HttpClient to listen and return
+    // XHR progress events.
     const req = new HttpRequest('POST', '/upload/file', file, {
       reportProgress: true
     });
@@ -38,8 +47,9 @@ export class UploaderService {
         catchError(this.handleError(file))
       );
   }
-  
+
   private getEventMessage(event: HttpEvent<any>, file: File) {
+    // console.log(event.type, file, HttpEventType);
     switch (event.type) {
       case HttpEventType.Sent:
         return `Uploading file "${file.name}" of size ${file.size}.`;

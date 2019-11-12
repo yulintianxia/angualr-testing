@@ -54,6 +54,7 @@ import { DiAllServiceModule } from './di-all-service/di-all-service.module';
 import { HttpAllServicesModule } from './http-all-services/http-all-services.module';
 import { AuthService } from './shared/services/auth.service';
 import { httpInterfaceptorProviders } from './shared/services';
+import { TestingRxComponent } from './testing-rx/testing-rx.component';
 
 
 
@@ -102,6 +103,7 @@ import { httpInterfaceptorProviders } from './shared/services';
     HeroListComponentComponent,
     VaillainsListComponent,
     HeroTaxReturnComponent,
+    TestingRxComponent,
   ],
   providers: [
     LoggerService,

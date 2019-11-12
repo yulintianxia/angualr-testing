@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpRequest, HttpHandler, HttpEvent, HttpEventType, HttpResponse, HttpInterceptor, HttpProgressEvent } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpRequest, HttpHandler, HttpEvent, HttpEventType, HttpResponse, HttpProgressEvent, HttpInterceptor } from '@angular/common/http';
+import { Observable, observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,38 +10,29 @@ export class UploadInterceptor implements HttpInterceptor {
     if (req.url.indexOf('/upload/file') === -1) {
       return next.handle(req);
     }
-    const delay = 300; // TODO: inject delay?
-    return createUploadEvents(delay);
+    const delay = 300;
+    return creatUploadEvents(delay);
   }
 }
-
-/** Create simulation of upload event stream */
-function createUploadEvents(delay: number) {
-  // Simulate XHR behavior which would provide this information in a ProgressEvent
+function creatUploadEvents(delay: number) {
   const chunks = 5;
   const total = 12345678;
   const chunkSize = Math.ceil(total / chunks);
-
   return new Observable<HttpEvent<any>>(observer => {
-    // notify the event stream that the request was sent.
     observer.next({ type: HttpEventType.Sent });
     uploadLoop(0);
     function uploadLoop(loaded: number) {
-      // N.B.: Cannot use setInterval or rxjs delay (which uses setInterval)
-      // because e2e test won't complete. A zone thing?
-      // Use setTimeout and tail recursion instead.
       setTimeout(() => {
         loaded += chunkSize;
 
         if (loaded >= total) {
           const doneResponse = new HttpResponse({
-            status: 201, // OK but no body;
+            status: 201
           });
           observer.next(doneResponse);
           observer.complete();
           return;
         }
-
         const progressEvent: HttpProgressEvent = {
           type: HttpEventType.UploadProgress,
           loaded,

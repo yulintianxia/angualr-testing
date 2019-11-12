@@ -10,6 +10,7 @@ export class PackageSerachComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }
