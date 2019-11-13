@@ -12,9 +12,7 @@ export class HttpAllServicesComponent implements OnInit {
   showUploader = true;
   showSearch = true;
   
-  
   constructor() { }
-  
   ngOnInit() {
   }
   toggleHeroes() { this.showHeroes = !this.showHeroes; }

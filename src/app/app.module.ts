@@ -1,14 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { HttpClientModule } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { SizerComponent } from './sizer/sizer.component';
 import { MySpyDirective } from './shared/directives/my-spy.directive';
@@ -52,15 +52,22 @@ import { VaillainsListComponent } from './more-d-service/service-all/vaillains-l
 import { HeroTaxReturnComponent } from './more-d-service/service-all/hero-tax-return/hero-tax-return.component';
 import { DiAllServiceModule } from './di-all-service/di-all-service.module';
 import { HttpAllServicesModule } from './http-all-services/http-all-services.module';
-import { AuthService } from './shared/services/auth.service';
 import { httpInterfaceptorProviders } from './shared/HttpInterceptor';
 import { TestingRxComponent } from './testing-rx/testing-rx.component';
-
-
+import { RequestCache, RequestCacheWithMapService } from './shared/HttpInterceptor/request-cache-with-map.service';
 
 
 @NgModule({
   declarations: [
+    TransformPipe,
+    MySpyDirective,
+    AdTestDirective,
+    AdhostDirective,
+    HighlightDirective,
+    AppUnlessDirective,
+    ForbiddenNameDirective,
+    IdentityRevealedValidatorDirective,
+    UniqueAlterEgoValidatorDirective,
     AppComponent,
     HeroesComponent,
     HeroDetailComponent,
@@ -68,29 +75,20 @@ import { TestingRxComponent } from './testing-rx/testing-rx.component';
     DashboardComponent,
     HeroSearchComponent,
     SizerComponent,
-    MySpyDirective,
     HeroParentComponent,
     HeroChildComponent,
     VoterComponent,
     VoterParentComponent,
-    AdhostDirective,
     AdbannerComponent,
     HeroJobAdComponent,
     HeroProfileComponent,
-    AdTestDirective,
     AdtestingComponent,
     Adtest1Component,
     Adtest2Component,
-    HighlightDirective,
-    AppUnlessDirective,
-    TransformPipe,
     NameEditorComponent,
     ProfileEditorComponent,
     HeroFormComponent,
     HeroFormTemplateComponent,
-    ForbiddenNameDirective,
-    IdentityRevealedValidatorDirective,
-    UniqueAlterEgoValidatorDirective,
     RnHeroFormComponent,
     DynamicFormComponent,
     QuestionComponent,
@@ -107,7 +105,8 @@ import { TestingRxComponent } from './testing-rx/testing-rx.component';
   ],
   providers: [
     LoggerService,
-    httpInterfaceptorProviders
+    httpInterfaceptorProviders,
+    { provide: RequestCache, useClass: RequestCacheWithMapService },
   ],
   entryComponents: [
     HeroJobAdComponent,
@@ -125,12 +124,17 @@ import { TestingRxComponent } from './testing-rx/testing-rx.component';
     HeroTestingModule,
     DiAllServiceModule,
     HttpAllServicesModule,
+    /* 自定义配置自定义 cookie/header 名称 */
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'My-Xsrf-Cookie',
+      headerName: 'My-Xsrf-Header',
+    }),
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, {
       dataEncapsulation: false,
       passThruUnknownUrl: true,
       put204: false // return entity after PUT/update
-    }
+    },
     )
   ],
   bootstrap: [AppComponent]
