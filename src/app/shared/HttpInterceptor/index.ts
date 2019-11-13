@@ -11,6 +11,7 @@ import { CachingInterceptorService } from './caching-interceptor.service';
 /* 拦截器实现 */
 export const httpInterfaceptorProviders = [
     {
+        /* 无用的拦截器 */
         provide: HTTP_INTERCEPTORS, useClass: NoopInterceptorService, multi: true
     },
     {
