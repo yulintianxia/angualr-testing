@@ -1,14 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { HttpClientModule } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { SizerComponent } from './sizer/sizer.component';
 import { MySpyDirective } from './shared/directives/my-spy.directive';
@@ -59,12 +59,22 @@ import { HeroListComponent } from './hero-list/hero-list.component';
 import { PagenotfindComponent } from './pagenotfind/pagenotfind.component';
 import { HeroesModule } from './heroes/heroes.module';
 import { HeroesRouterModule } from './heroes-router/heroes-router.module';
+import { RequestCache, RequestCacheWithMapService } from './shared/HttpInterceptor/request-cache-with-map.service';
 
 
 
 
 @NgModule({
   declarations: [
+    TransformPipe,
+    MySpyDirective,
+    AdTestDirective,
+    AdhostDirective,
+    HighlightDirective,
+    AppUnlessDirective,
+    ForbiddenNameDirective,
+    IdentityRevealedValidatorDirective,
+    UniqueAlterEgoValidatorDirective,
     AppComponent,
     HeroesComponent,
     HeroDetailComponent,
@@ -72,29 +82,20 @@ import { HeroesRouterModule } from './heroes-router/heroes-router.module';
     DashboardComponent,
     HeroSearchComponent,
     SizerComponent,
-    MySpyDirective,
     HeroParentComponent,
     HeroChildComponent,
     VoterComponent,
     VoterParentComponent,
-    AdhostDirective,
     AdbannerComponent,
     HeroJobAdComponent,
     HeroProfileComponent,
-    AdTestDirective,
     AdtestingComponent,
     Adtest1Component,
     Adtest2Component,
-    HighlightDirective,
-    AppUnlessDirective,
-    TransformPipe,
     NameEditorComponent,
     ProfileEditorComponent,
     HeroFormComponent,
     HeroFormTemplateComponent,
-    ForbiddenNameDirective,
-    IdentityRevealedValidatorDirective,
-    UniqueAlterEgoValidatorDirective,
     RnHeroFormComponent,
     DynamicFormComponent,
     QuestionComponent,
@@ -114,7 +115,8 @@ import { HeroesRouterModule } from './heroes-router/heroes-router.module';
   ],
   providers: [
     LoggerService,
-    httpInterfaceptorProviders
+    httpInterfaceptorProviders,
+    { provide: RequestCache, useClass: RequestCacheWithMapService },
   ],
   entryComponents: [
     HeroJobAdComponent,
@@ -133,6 +135,11 @@ import { HeroesRouterModule } from './heroes-router/heroes-router.module';
     HeroesRouterModule,
     HeroesModule,
     HttpAllServicesModule,
+    /* 自定义配置自定义 cookie/header 名称 */
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'My-Xsrf-Cookie',
+      headerName: 'My-Xsrf-Header',
+    }),
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, {
       dataEncapsulation: false,

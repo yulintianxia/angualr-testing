@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HttpInterfaceptorsComponent } from './http-interfaceptors.component';
+import { RouterAllComponent } from './router-all.component';
 
-describe('HttpInterfaceptorsComponent', () => {
-  let component: HttpInterfaceptorsComponent;
-  let fixture: ComponentFixture<HttpInterfaceptorsComponent>;
+describe('RouterAllComponent', () => {
+  let component: RouterAllComponent;
+  let fixture: ComponentFixture<RouterAllComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HttpInterfaceptorsComponent ]
+      declarations: [ RouterAllComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HttpInterfaceptorsComponent);
+    fixture = TestBed.createComponent(RouterAllComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
