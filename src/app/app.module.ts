@@ -52,9 +52,13 @@ import { VaillainsListComponent } from './more-d-service/service-all/vaillains-l
 import { HeroTaxReturnComponent } from './more-d-service/service-all/hero-tax-return/hero-tax-return.component';
 import { DiAllServiceModule } from './di-all-service/di-all-service.module';
 import { HttpAllServicesModule } from './http-all-services/http-all-services.module';
-import { AuthService } from './shared/services/auth.service';
 import { httpInterfaceptorProviders } from './shared/HttpInterceptor';
 import { TestingRxComponent } from './testing-rx/testing-rx.component';
+import { CrisisListComponent } from './crisis-list/crisis-list.component';
+import { HeroListComponent } from './hero-list/hero-list.component';
+import { PagenotfindComponent } from './pagenotfind/pagenotfind.component';
+import { HeroesModule } from './heroes/heroes.module';
+import { HeroesRouterModule } from './heroes-router/heroes-router.module';
 
 
 
@@ -104,6 +108,9 @@ import { TestingRxComponent } from './testing-rx/testing-rx.component';
     VaillainsListComponent,
     HeroTaxReturnComponent,
     TestingRxComponent,
+    CrisisListComponent,
+    HeroListComponent,
+    PagenotfindComponent,
   ],
   providers: [
     LoggerService,
@@ -117,13 +124,14 @@ import { TestingRxComponent } from './testing-rx/testing-rx.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
     HttpClientModule,
     DropDivModule,
     ReactiveFormsModule,
     HeroTestingModule,
     DiAllServiceModule,
+    HeroesRouterModule,
+    HeroesModule,
     HttpAllServicesModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, {
@@ -131,7 +139,8 @@ import { TestingRxComponent } from './testing-rx/testing-rx.component';
       passThruUnknownUrl: true,
       put204: false // return entity after PUT/update
     }
-    )
+    ),
+    AppRoutingModule,
   ],
   bootstrap: [AppComponent]
 })
