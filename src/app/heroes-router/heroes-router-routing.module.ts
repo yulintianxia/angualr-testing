@@ -5,8 +5,8 @@ import { HeroesDetailTestComponent } from './heroes-detail-test/heroes-detail-te
 
 
 const routes: Routes = [
-  {path: 'heroes-list-test', component: HeroesListTestComponent },
-  {path: 'heroes-detail-test/:id', component: HeroesDetailTestComponent}
+  { path: 'heroes-list-test', component: HeroesListTestComponent, data: { animation: 'heroes' } },
+  { path: 'heroes-detail-test/:id', component: HeroesDetailTestComponent, data: { animation: 'hero' } }
 ];
 
 @NgModule({

@@ -54,13 +54,16 @@ import { DiAllServiceModule } from './di-all-service/di-all-service.module';
 import { HttpAllServicesModule } from './http-all-services/http-all-services.module';
 import { httpInterfaceptorProviders } from './shared/HttpInterceptor';
 import { TestingRxComponent } from './testing-rx/testing-rx.component';
-import { CrisisListComponent } from './crisis-list/crisis-list.component';
 import { HeroListComponent } from './hero-list/hero-list.component';
 import { PagenotfindComponent } from './pagenotfind/pagenotfind.component';
 import { HeroesModule } from './heroes/heroes.module';
 import { HeroesRouterModule } from './heroes-router/heroes-router.module';
 import { RequestCache, RequestCacheWithMapService } from './shared/HttpInterceptor/request-cache-with-map.service';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CrisisCenterComponent } from './crisis-center/crisis-center/crisis-center.component';
+import { CrisisCenterHomeComponent } from './crisis-center/crisis-center-home/crisis-center-home.component';
+import { CrisisCenterModule } from './crisis-center/crisis-center.module';
+import { ComposeMessageComponent } from './compose-message/compose-message.component';
 
 
 
@@ -109,9 +112,9 @@ import { RequestCache, RequestCacheWithMapService } from './shared/HttpIntercept
     VaillainsListComponent,
     HeroTaxReturnComponent,
     TestingRxComponent,
-    CrisisListComponent,
     HeroListComponent,
     PagenotfindComponent,
+    ComposeMessageComponent
   ],
   providers: [
     LoggerService,
@@ -126,6 +129,7 @@ import { RequestCache, RequestCacheWithMapService } from './shared/HttpIntercept
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
     DropDivModule,
@@ -147,6 +151,7 @@ import { RequestCache, RequestCacheWithMapService } from './shared/HttpIntercept
       put204: false // return entity after PUT/update
     }
     ),
+    CrisisCenterModule,
     AppRoutingModule,
   ],
   bootstrap: [AppComponent]

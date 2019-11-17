@@ -11,13 +11,17 @@ import { QuestionService } from './shared/services/question.service';
 import { LoggerService } from './shared/services/logger.service';
 import { MessageParent } from './shared/interfaces/messageParent.class';
 import { HeroTestingService } from './shared/services/hero-testing.service';
+import { slideInAnimation } from './animations';
+import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  animations: [slideInAnimation],
   providers: [
     { provide: MessageParent, useExisting: forwardRef(() => AppComponent) }
-  ]
+  ],
+
 })
 export class AppComponent implements OnInit {
   questions: any[] = [];
@@ -71,6 +75,11 @@ export class AppComponent implements OnInit {
   }
   addLogTesting() {
     this.heroTestingService.addLog('app component');
+  }
+  /* 动画 */
+  getAnimationData(routerOutlet: RouterOutlet) {
+    console.log(routerOutlet);
+    return routerOutlet && routerOutlet.activatedRouteData && routerOutlet.activatedRouteData['animation'];
   }
 
 }

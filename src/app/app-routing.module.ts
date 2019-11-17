@@ -3,19 +3,23 @@ import { Routes, RouterModule } from '@angular/router';
 import { HeroesComponent } from './heroes/heroes.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
-import { CrisisListComponent } from './crisis-list/crisis-list.component';
+// import { CrisisListComponent } from './crisis-list/crisis-list.component';
 import { HeroListComponent } from './hero-list/hero-list.component';
 import { PagenotfindComponent } from './pagenotfind/pagenotfind.component';
+import { ComposeMessageComponent } from './compose-message/compose-message.component';
 
 
 
 const routes: Routes = [
+  {
+    path: 'compose', component: ComposeMessageComponent, outlet: 'popup'
+  },
   { path: '', redirectTo: '/heroelist', pathMatch: 'full' },
-  { path: 'heroes', component: HeroesComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'detail/:id', component: HeroDetailComponent },
-  { path: 'crisis-center', component: CrisisListComponent },
-  { path: 'heroelist', component: HeroListComponent },
+  // { path: 'heroes', component: HeroesComponent },
+  // { path: 'dashboard', component: DashboardComponent },
+  // { path: 'detail/:id', component: HeroDetailComponent },
+  // // { path: 'crisis-center', component: CrisisListComponent },
+  // { path: 'heroelist', component: HeroListComponent },
   {path: '**', component: PagenotfindComponent}
 
 ];

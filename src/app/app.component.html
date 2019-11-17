@@ -104,8 +104,13 @@
     <a routerLink='/crisis-center' routerLinkActive='active'>
     Crisis Center
    </a>
-    <a routerLink='/heroelist' routerLinkActive='active'>
+    <a routerLink='/heroes-list-test' routerLinkActive='active'>
     Heroes
    </a>
+    <a [routerLink]="[{outlets:{popup:['compose']}}]">第二路有</a>
 </nav>
-<router-outlet></router-outlet>
+<div [@routeAnimation]='getAnimationData(routerOutlet)'>
+    <router-outlet #routerOutlet='outlet'></router-outlet>
+</div>
+
+<router-outlet name='popup'></router-outlet>
