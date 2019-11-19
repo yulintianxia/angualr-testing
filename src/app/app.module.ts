@@ -64,6 +64,8 @@ import { CrisisCenterComponent } from './crisis-center/crisis-center/crisis-cent
 import { CrisisCenterHomeComponent } from './crisis-center/crisis-center-home/crisis-center-home.component';
 import { CrisisCenterModule } from './crisis-center/crisis-center.module';
 import { ComposeMessageComponent } from './compose-message/compose-message.component';
+import { AdminModule } from './admin/admin.module';
+import { LoginComponent } from './auth/login/login.component';
 
 
 
@@ -114,7 +116,8 @@ import { ComposeMessageComponent } from './compose-message/compose-message.compo
     TestingRxComponent,
     HeroListComponent,
     PagenotfindComponent,
-    ComposeMessageComponent
+    ComposeMessageComponent,
+    LoginComponent
   ],
   providers: [
     LoggerService,
@@ -151,6 +154,7 @@ import { ComposeMessageComponent } from './compose-message/compose-message.compo
       put204: false // return entity after PUT/update
     }
     ),
+    AdminModule,
     CrisisCenterModule,
     AppRoutingModule,
   ],
