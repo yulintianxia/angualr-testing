@@ -11,7 +11,7 @@ import { CrisisCenterHomeComponent } from './crisis-center-home/crisis-center-ho
 
 @NgModule({
   declarations: [
-    CrisisDetailComponent, 
+    CrisisDetailComponent,
     CrisisListComponent,
     CrisisCenterComponent,
     CrisisCenterHomeComponent

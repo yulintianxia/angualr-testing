@@ -26,12 +26,11 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
     let url: string = state.url;
     console.log(state);
     return this.checkLogin(url);
-    // return true;
   }
   canActivateChild(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
+    return this.canActivate(next, state);
   }
   canLoad(
     route: Route,
@@ -45,6 +44,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
       return true;
     }
     this.authLoginService.redirectUrl = url;
+    // console.log(url);
     this.router.navigate(['/login']);
     return false;
   }

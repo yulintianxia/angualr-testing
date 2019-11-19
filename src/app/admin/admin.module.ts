@@ -18,6 +18,12 @@ import { ManageHeroesComponent } from './manage-heroes/manage-heroes.component';
   imports: [
     CommonModule,
     AdminRoutingModule
+  ],
+  exports: [
+    AdminDashboardComponent,
+    AdminComponent,
+    ManageCrisesComponent,
+    ManageHeroesComponent,
   ]
 })
 export class AdminModule { }

@@ -78,7 +78,6 @@ export class AppComponent implements OnInit {
   }
   /* 动画 */
   getAnimationData(routerOutlet: RouterOutlet) {
-    console.log(routerOutlet);
     return routerOutlet && routerOutlet.activatedRouteData && routerOutlet.activatedRouteData['animation'];
   }
 
