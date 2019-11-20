@@ -118,7 +118,6 @@ import { AuthModule } from './auth/auth.module';
     HeroListComponent,
     PagenotfindComponent,
     ComposeMessageComponent,
-    LoginComponent
   ],
   providers: [
     LoggerService,
