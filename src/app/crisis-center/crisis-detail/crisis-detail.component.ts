@@ -34,7 +34,7 @@ export class CrisisDetailComponent implements OnInit {
     this.gotoCrises();
   }
 
-  canDeativate(): Observable<boolean> | boolean {
+  canDeactivate(): Observable<boolean> | boolean {
     if (!this.crisis || this.crisis.name === this.editName) {
       return true;
     }
