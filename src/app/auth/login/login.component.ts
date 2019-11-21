@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthLoginService } from 'src/app/shared/services/auth-login.service';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -30,8 +30,13 @@ export class LoginComponent implements OnInit {
       if (this.authLoginService.isLoggedIn) {
         // Get the redirect URL from our auth service
         // If no redirect has been set, use the defaul
-         let redirect = this.authLoginService.redirectUrl ? this.router.parseUrl(this.authLoginService.redirectUrl) : '/admin';
-         this.router.navigateByUrl(redirect);
+        let redirect = this.authLoginService.redirectUrl ? this.router.parseUrl(this.authLoginService.redirectUrl) : '/admin';
+        let navigationExtras: NavigationExtras = {
+          queryParamsHandling: 'preserve',
+          preserveFragment: true
+        };
+        this.router.navigateByUrl(redirect, navigationExtras);
+
       }
     });
   }
@@ -40,5 +45,4 @@ export class LoginComponent implements OnInit {
     this.authLoginService.logOut();
     this.setMessage();
   }
-
 }

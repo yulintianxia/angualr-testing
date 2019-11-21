@@ -7,10 +7,11 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
   UrlTree,
-  Router
+  Router,
+  NavigationExtras
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthLoginService } from '../shared/services/auth-login.service';
+import { AuthLoginService } from './auth-login.service';
 
 @Injectable({
   providedIn: 'root'
@@ -43,9 +44,15 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
     if (this.authLoginService.isLoggedIn) {
       return true;
     }
+    /* sessionid */
+    let sessionId = 1234567890;
+    let navigationExtras: NavigationExtras = {
+      queryParams: { 'sessionId': sessionId, 'times': 22222 },
+      fragment: 'anchor'
+    };
     this.authLoginService.redirectUrl = url;
     // console.log(url);
-    this.router.navigate(['/login']);
+    this.router.navigate(['/login'], navigationExtras);
     return false;
   }
 }
