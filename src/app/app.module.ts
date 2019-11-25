@@ -60,13 +60,10 @@ import { HeroesModule } from './heroes/heroes.module';
 import { HeroesRouterModule } from './heroes-router/heroes-router.module';
 import { RequestCache, RequestCacheWithMapService } from './shared/HttpInterceptor/request-cache-with-map.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CrisisCenterComponent } from './crisis-center/crisis-center/crisis-center.component';
-import { CrisisCenterHomeComponent } from './crisis-center/crisis-center-home/crisis-center-home.component';
 import { CrisisCenterModule } from './crisis-center/crisis-center.module';
 import { ComposeMessageComponent } from './compose-message/compose-message.component';
-import { AdminModule } from './admin/admin.module';
-import { LoginComponent } from './auth/login/login.component';
 import { AuthModule } from './auth/auth.module';
+import { Router } from '@angular/router';
 
 
 
@@ -154,11 +151,18 @@ import { AuthModule } from './auth/auth.module';
       put204: false // return entity after PUT/update
     }
     ),
-    AdminModule,
     AuthModule,
     CrisisCenterModule,
     AppRoutingModule,
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+   // Diagnostic only: inspect router configuration
+   constructor(router: Router) {
+    // Use a custom replacer to display function names in the route configs
+    const replacer = (key, value) => (typeof value === 'function') ? value.name : value;
+
+    console.log('Routes: ', JSON.stringify(router.config, replacer, 2));
+  }
+}

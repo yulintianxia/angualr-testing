@@ -10,7 +10,7 @@ import { CrisisDetailResolverService } from '../shared/services/crisis-detail-re
 
 
 const routes: Routes = [{
-  path: 'crisis-center',
+  path: '',
   component: CrisisCenterComponent,
   children: [
     {

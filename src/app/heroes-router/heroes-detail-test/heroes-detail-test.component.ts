@@ -35,8 +35,8 @@ export class HeroesDetailTestComponent implements OnInit {
 
   gotoHeroes(hero: HeroInterface) {
      let heroId = hero ? hero.id : null;
-    this.router.navigate(['/heroes-list-test', { id: heroId, foo: 'foo' }]);
-    // this.router.navigate(['/superheroes', { id: heroId, foo: 'foo' }]);
+    // this.router.navigate(['/heroes-list-test', { id: heroId, foo: 'foo' }]);
+    this.router.navigate(['/superheroes', { id: heroId, foo: 'foo' }]);
   }
 
 }
