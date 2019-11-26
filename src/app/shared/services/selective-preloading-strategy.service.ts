@@ -9,7 +9,7 @@ import { removeSummaryDuplicates } from '@angular/compiler';
 export class SelectivePreloadingStrategyService implements PreloadingStrategy {
   preloadedModules: string[] = [];
   preload(route: Route, load: () => Observable<any>): Observable<any> {
-    if (route.data && route.data.['preload']) {
+    if (route.data && route.data['preload']) {
       this.preloadedModules.push(route.path);
       console.log('preloaded' + route.path);
       return load();
