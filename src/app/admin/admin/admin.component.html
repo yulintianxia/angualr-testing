@@ -1,4 +1,6 @@
-<h3></h3>
+<div [@openClose="isOpen ?'open':'closed'" ] class="open-close-container">
+    <p>The box is now {{ isOpen ? 'Open' : 'Closed' }}!</p>
+</div>
 <nav>
     <!-- 精准匹配 -->
     <a routerLink='./' routerLinkActive='active' [routerLinkActiveOptions]='{exact: true}'>Dashboard</a>

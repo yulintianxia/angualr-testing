@@ -5,7 +5,6 @@ import { ComposeMessageComponent } from './compose-message/compose-message.compo
 import { AuthGuard } from './shared/services/auth.guard';
 
 
-
 const routes: Routes = [
   {
     path: 'compose', component: ComposeMessageComponent, outlet: 'popup'

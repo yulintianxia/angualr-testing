@@ -65,6 +65,8 @@ import { ComposeMessageComponent } from './compose-message/compose-message.compo
 import { AuthModule } from './auth/auth.module';
 import { Router } from '@angular/router';
 
+import { OpenCloseComponent } from './animation/open-close/open-close.component';
+
 
 
 @NgModule({
@@ -115,6 +117,7 @@ import { Router } from '@angular/router';
     HeroListComponent,
     PagenotfindComponent,
     ComposeMessageComponent,
+    OpenCloseComponent
   ],
   providers: [
     LoggerService,
@@ -158,8 +161,8 @@ import { Router } from '@angular/router';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-   // Diagnostic only: inspect router configuration
-   constructor(router: Router) {
+  // Diagnostic only: inspect router configuration
+  constructor(router: Router) {
     // Use a custom replacer to display function names in the route configs
     const replacer = (key, value) => (typeof value === 'function') ? value.name : value;
 
