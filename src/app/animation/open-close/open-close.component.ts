@@ -27,13 +27,15 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
         animate('1s')
       ]),
       transition('*=>open', [
-        animate('0.5s')
+        animate('0.5s', style({
+          opacity: '*'
+        }))
       ]),
       /* open<=>closed */
       transition('open <=> closed', [
         animate('0.5s')
       ]),
-      /* 任意状态切换 */
+      /* 任意状态切换, 带样式的动画*/
       transition('open <=> closed', [
         animate('0.5s')
       ]),

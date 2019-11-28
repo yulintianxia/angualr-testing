@@ -60,12 +60,14 @@ import { HeroesModule } from './heroes/heroes.module';
 import { HeroesRouterModule } from './heroes-router/heroes-router.module';
 import { RequestCache, RequestCacheWithMapService } from './shared/HttpInterceptor/request-cache-with-map.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CrisisCenterModule } from './crisis-center/crisis-center.module';
 import { ComposeMessageComponent } from './compose-message/compose-message.component';
 import { AuthModule } from './auth/auth.module';
 import { Router } from '@angular/router';
 
 import { OpenCloseComponent } from './animation/open-close/open-close.component';
+import { HeroListEnterLeaveComponent } from './animation/hero-list-enter-leave/hero-list-enter-leave.component';
+import { InsertRemoveComponent } from './animation/insert-remove/insert-remove.component';
+import { HeroListPageComponent } from './animation/hero-list-page/hero-list-page.component';
 
 
 
@@ -117,7 +119,10 @@ import { OpenCloseComponent } from './animation/open-close/open-close.component'
     HeroListComponent,
     PagenotfindComponent,
     ComposeMessageComponent,
-    OpenCloseComponent
+    OpenCloseComponent,
+    HeroListEnterLeaveComponent,
+    InsertRemoveComponent,
+    HeroListPageComponent
   ],
   providers: [
     LoggerService,
@@ -139,7 +144,6 @@ import { OpenCloseComponent } from './animation/open-close/open-close.component'
     ReactiveFormsModule,
     HeroTestingModule,
     DiAllServiceModule,
-    HeroesRouterModule,
     HeroesModule,
     HttpAllServicesModule,
     /* 自定义配置自定义 cookie/header 名称 */
@@ -154,8 +158,8 @@ import { OpenCloseComponent } from './animation/open-close/open-close.component'
       put204: false // return entity after PUT/update
     }
     ),
+    HeroesRouterModule,
     AuthModule,
-    CrisisCenterModule,
     AppRoutingModule,
   ],
   bootstrap: [AppComponent]
