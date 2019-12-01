@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './appRoutingModule-routing';
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
@@ -68,6 +68,8 @@ import { OpenCloseComponent } from './animation/open-close/open-close.component'
 import { HeroListEnterLeaveComponent } from './animation/hero-list-enter-leave/hero-list-enter-leave.component';
 import { InsertRemoveComponent } from './animation/insert-remove/insert-remove.component';
 import { HeroListPageComponent } from './animation/hero-list-page/hero-list-page.component';
+import { StatusSliderComponent } from './animation/status-slider-component/status-slider-component.component';
+import { HeroListGroupsComponent } from './animation/hero-list-page-testing/hero-list-page-testing.component';
 
 
 
@@ -122,7 +124,9 @@ import { HeroListPageComponent } from './animation/hero-list-page/hero-list-page
     OpenCloseComponent,
     HeroListEnterLeaveComponent,
     InsertRemoveComponent,
-    HeroListPageComponent
+    HeroListPageComponent,
+    StatusSliderComponent,
+    HeroListGroupsComponent
   ],
   providers: [
     LoggerService,

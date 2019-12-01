@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { trigger, transition, query, style, stagger, animate } from '@angular/animations';
+import { HEROES } from 'src/app/shared/interfaces/heroData';
 
 @Component({
   selector: 'app-hero-list-page',
@@ -39,8 +40,29 @@ import { trigger, transition, query, style, stagger, animate } from '@angular/an
 export class HeroListPageComponent implements OnInit {
 
   constructor() { }
+  @HostBinding('@pageAnimations')
+  public animatePage = true;
 
-  ngOnInit() {
+  _heroes = [];
+  heroTotal = -1;
+  get heroes() {
+    return this._heroes;
   }
 
+  ngOnInit() {
+    this._heroes = HEROES;
+  }
+
+  updateCriteria(criteria: string) {
+    criteria = criteria ? criteria.trim() : '';
+
+    this._heroes = HEROES.filter(hero => hero.name.toLowerCase().includes(criteria.toLowerCase()));
+    const newTotal = this.heroes.length;
+
+    if (this.heroTotal !== newTotal) {
+      this.heroTotal = newTotal;
+    } else if (!criteria) {
+      this.heroTotal = -1;
+    }
+  }
 }

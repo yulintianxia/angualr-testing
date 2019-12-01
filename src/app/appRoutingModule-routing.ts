@@ -7,9 +7,13 @@ import { OpenCloseComponent } from './animation/open-close/open-close.component'
 import { HeroListEnterLeaveComponent } from './animation/hero-list-enter-leave/hero-list-enter-leave.component';
 import { InsertRemoveComponent } from './animation/insert-remove/insert-remove.component';
 import { HeroListPageComponent } from './animation/hero-list-page/hero-list-page.component';
+import { StatusSliderComponent } from './animation/status-slider-component/status-slider-component.component';
 
 
 const routes: Routes = [
+  {
+    path: 'slideStatus', component: StatusSliderComponent
+  },
   {
     path: 'hero-list-page', component: HeroListPageComponent
   },
