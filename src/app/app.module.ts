@@ -70,6 +70,9 @@ import { InsertRemoveComponent } from './animation/insert-remove/insert-remove.c
 import { HeroListPageComponent } from './animation/hero-list-page/hero-list-page.component';
 import { StatusSliderComponent } from './animation/status-slider-component/status-slider-component.component';
 import { HeroListGroupsComponent } from './animation/hero-list-page-testing/hero-list-page-testing.component';
+import { LifeTestingComponent } from './ng-lifes/life-testing/life-testing.component';
+import { LifeChildComponent } from './ng-lifes/life-child/life-child.component';
+
 
 
 
@@ -126,7 +129,9 @@ import { HeroListGroupsComponent } from './animation/hero-list-page-testing/hero
     InsertRemoveComponent,
     HeroListPageComponent,
     StatusSliderComponent,
-    HeroListGroupsComponent
+    HeroListGroupsComponent,
+    LifeTestingComponent,
+    LifeChildComponent
   ],
   providers: [
     LoggerService,
@@ -172,8 +177,8 @@ export class AppModule {
   // Diagnostic only: inspect router configuration
   constructor(router: Router) {
     // Use a custom replacer to display function names in the route configs
-    const replacer = (key, value) => (typeof value === 'function') ? value.name : value;
+    // const replacer = (key, value) => (typeof value === 'function') ? value.name : value;
 
-    console.log('Routes: ', JSON.stringify(router.config, replacer, 2));
+    // console.log('Routes: ', JSON.stringify(router.config, replacer, 2));
   }
 }

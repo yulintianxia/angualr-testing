@@ -33,6 +33,8 @@ export class AppComponent implements OnInit {
   condition = true;
   ads: AdItems[];
   toggle = true;
+  /*  life */
+  name = 'jsyu';
   get format() {
     return this.toggle ? 'shortDate' : 'fullDate';
   }
@@ -44,6 +46,7 @@ export class AppComponent implements OnInit {
     private heroTestingService: HeroTestingService
   ) {
     this.questions = this.questionService.getQuestions();
+  
   }
   ngOnInit() {
     // this.ads = this.adService.getAds();

@@ -1,0 +1,16 @@
+<div class='parent'>
+    <h2>我是父组件parent</h2>
+    <div>问候:
+        <input type="text" [(ngModel)]="greeting">
+    </div>
+    <div>姓名:
+        <input type="text" [(ngModel)]="user.name">
+    </div>
+    <div>
+        <app-life-child #child1 [user]='user' [greeting]='greeting'></app-life-child>
+    </div>
+
+</div>
+<div>
+    <app-life-child #child2></app-life-child>
+</div>
