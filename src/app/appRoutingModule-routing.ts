@@ -8,9 +8,13 @@ import { HeroListEnterLeaveComponent } from './animation/hero-list-enter-leave/h
 import { InsertRemoveComponent } from './animation/insert-remove/insert-remove.component';
 import { HeroListPageComponent } from './animation/hero-list-page/hero-list-page.component';
 import { StatusSliderComponent } from './animation/status-slider-component/status-slider-component.component';
+import { RxjsTestingComponent } from './rxjs-testing/rxjs-testing.component';
 
 
 const routes: Routes = [
+  {
+    path: 'rxjs-testing', component: RxjsTestingComponent
+  },
   {
     path: 'slideStatus', component: StatusSliderComponent
   },

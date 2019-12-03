@@ -72,6 +72,7 @@ import { StatusSliderComponent } from './animation/status-slider-component/statu
 import { HeroListGroupsComponent } from './animation/hero-list-page-testing/hero-list-page-testing.component';
 import { LifeTestingComponent } from './ng-lifes/life-testing/life-testing.component';
 import { LifeChildComponent } from './ng-lifes/life-child/life-child.component';
+import { RxjsTestingComponent } from './rxjs-testing/rxjs-testing.component';
 
 
 
@@ -131,7 +132,8 @@ import { LifeChildComponent } from './ng-lifes/life-child/life-child.component';
     StatusSliderComponent,
     HeroListGroupsComponent,
     LifeTestingComponent,
-    LifeChildComponent
+    LifeChildComponent,
+    RxjsTestingComponent
   ],
   providers: [
     LoggerService,
