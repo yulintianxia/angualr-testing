@@ -7,9 +7,9 @@ import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef, ElementRef } 
 })
 export class SettersParentComponent implements OnInit, AfterViewInit {
   list = ['111', '222', '333'];
-  @ViewChild('setters', { static: false }) template: TemplateRef<any>;
-  @ViewChild(TemplateRef, { static: false }) templateRef: TemplateRef<any>;
-  @ViewChild('setters', { read: ElementRef, static: false }) componentChildElement: ElementRef;
+  @ViewChild('setters') template: TemplateRef<any>;
+  @ViewChild(TemplateRef) templateRef: TemplateRef<any>;
+  @ViewChild('setters', { read: ElementRef }) componentChildElement: ElementRef;
   constructor() { }
   ngAfterViewInit(): void {
     console.log(this.template, this.templateRef, this.componentChildElement);

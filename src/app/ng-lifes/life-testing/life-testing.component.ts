@@ -25,7 +25,7 @@ export class LifeTestingComponent implements OnInit, OnChanges,
   OnDestroy, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit,
   AfterViewChecked {
 
-  @ViewChild('child1', {static: false})
+  @ViewChild('child1')
   child1: LifeChildComponent;
   /* 父组件 */
   greeting: string = 'Hello word';
