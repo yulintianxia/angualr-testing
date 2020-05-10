@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { interval, Observable } from 'rxjs';
-import { take, tap, map, flatMap } from 'rxjs/operators';
+import { interval, Observable, Subject, Observer, ReplaySubject } from 'rxjs';
+import { take, tap, map, flatMap, share } from 'rxjs/operators';
 
 @Component({
   selector: 'app-rxjs-testing',
@@ -24,7 +24,7 @@ export class RxjsTestingComponent implements OnInit {
   如果有2个参数
   time(100,100)类似于interval，第二个参数是隔1ooms执行，无限
   never 无限创建类型符
- 
+
   empty() 直接结束，不输出任何元素,直接完成
   catchError 捕获异常的操作符
   take取流前几次，Observable
@@ -76,14 +76,32 @@ export class RxjsTestingComponent implements OnInit {
     );
     switchMap:有外层流进来,原来的的外层流抛弃掉
   */
-  obervable: Observable<any> = interval(100).pipe(
-    take(3),
-    flatMap(val => interval(100)),
-  );
+  //  rxjs特殊字符:Subject,地址:
+  // Subject: 既是订阅者又是观察者,
+  // ReplaySubject: 保留以前的流的值;
+  // BehaviorSubject: 始终保持最新流的值
+
+  // https://segmentfault.com/a/1190000008886598;
+
+  // obervable: Observable<any> = interval(100).pipe(
+  //   take(3),
+  //   flatMap(val => interval(100)),
+  // );
+  intervalTesting: Observable<any> = interval(1000).pipe(
+    share(),
+    take(5)
+  )
+    ;
+  subjectTesting: ReplaySubject<any> = new ReplaySubject(2);
   constructor() { }
 
   ngOnInit() {
-    this.testing();
+    // this.testing();
+    // this.testInterval();
+    /* rxjs的冷和热 */
+    // this.testHotWet();
+    /* interval练习 */
+    this.testInterval();
   }
   testing() {
     // this.obervable.subscribe(
@@ -95,6 +113,38 @@ export class RxjsTestingComponent implements OnInit {
     //   error => console.log(error),
     //   () => console.log('comlplete')
     // );
+  }
+  testInterval() {
+    const ob1 = {
+      next: (val) => console.log('ob1值' + val),
+      err: (error) => console.log(error),
+      complete: () => console.log('ob1 is completed')
+    };
+    const ob2 = {
+      next: (val) => console.log('ob2值' + val),
+      err: (error) => console.log(error),
+      complete: () => console.log('ob2 is completed')
+    };
+    // this.intervalTesting.subscribe(ob1);
+    // // this.subjectTesting.subscribe(ob1);
+    // setTimeout(() => {
+    //   this.intervalTesting.subscribe(ob2);
+    //   // this.subjectTesting.subscribe(ob2);
+    // }, 2000);
+    // this.intervalTesting.subscribe(this.subjectTesting);
+    this.subjectTesting.subscribe(ob1);
+    setTimeout(() => {
+      this.subjectTesting.subscribe(ob2);
+    }, 2000);
+    this.subjectTesting.next(10);
+    this.subjectTesting.next(11);
+    this.intervalTesting.subscribe(this.subjectTesting);
+  }
+  testHotWet() {
+    // const sub1 = this.intervalTesting.subscribe(v => console.log('sub1_' + v));
+    // const sub2 = setTimeout(() => {
+    //   this.intervalTesting.subscribe(v => console.log('sub2_' + v));
+    // }, 2000);
   }
 
 }

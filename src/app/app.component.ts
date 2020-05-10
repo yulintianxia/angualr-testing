@@ -13,6 +13,7 @@ import { MessageParent } from './shared/interfaces/messageParent.class';
 import { HeroTestingService } from './shared/services/hero-testing.service';
 import { slideInAnimation } from './animations';
 import { RouterOutlet } from '@angular/router';
+import { ValueService } from './shared/services/value.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -43,7 +44,8 @@ export class AppComponent implements OnInit {
     private adService: AdService,
     private adtestingService: AdtestingService,
     private questionService: QuestionService,
-    private heroTestingService: HeroTestingService
+    private heroTestingService: HeroTestingService,
+    private valueServie: ValueService
   ) {
     this.questions = this.questionService.getQuestions();
   
@@ -82,6 +84,10 @@ export class AppComponent implements OnInit {
   /* 动画 */
   getAnimationData(routerOutlet: RouterOutlet) {
     return routerOutlet && routerOutlet.activatedRouteData && routerOutlet.activatedRouteData['animation'];
+  }
+  testing() {
+   let index =   this.valueServie.getList();
+   console.log(index);
   }
 
 }

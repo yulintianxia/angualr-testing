@@ -75,6 +75,11 @@ import { LifeChildComponent } from './ng-lifes/life-child/life-child.component';
 import { RxjsTestingComponent } from './rxjs-testing/rxjs-testing.component';
 
 
+/* hash路有 */
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { SettersComponent } from './setters/setters.component';
+import { SettersParentComponent } from './setters/setters-parent/setters-parent.component';
+
 
 
 @NgModule({
@@ -133,10 +138,13 @@ import { RxjsTestingComponent } from './rxjs-testing/rxjs-testing.component';
     HeroListGroupsComponent,
     LifeTestingComponent,
     LifeChildComponent,
-    RxjsTestingComponent
+    RxjsTestingComponent,
+    SettersComponent,
+    SettersParentComponent,
   ],
   providers: [
     LoggerService,
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
     httpInterfaceptorProviders,
     { provide: RequestCache, useClass: RequestCacheWithMapService },
   ],

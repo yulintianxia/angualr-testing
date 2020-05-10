@@ -14,6 +14,7 @@ import {
 } from '@angular/core';
 import { LifeChildComponent } from '../life-child/life-child.component';
 
+
 let logIndex: number = 1;
 @Component({
   selector: 'app-life-testing',
